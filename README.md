@@ -5,7 +5,7 @@ Get started:
 ------------
 
 * install Git
-* Clone repo : `git clone git@github.com:lucascharrier/potobox.git` (make sure your account has an SSH keyair, otherwise use HTTPS. More info here: https://help.github.com/articles/which-remote-url-should-i-use)
+* Clone repo : `git clone git@github.com:LucasCharrier/potobox.git` (make sure your account has an SSH keyair, otherwise use HTTPS. More info here: https://help.github.com/articles/which-remote-url-should-i-use)
 
 * install node/npm:
 ```
