@@ -1,0 +1,19 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header">
+        <button
+            class="button button-clear icon ion-ios7-close-empty"
+            ng-click="closeModal()"></button>
+        <h1 class="title">Photo du profil</h1>
+        <button
+            class="button button-clear"
+            ng-click="showLibrary()" nav-clear
+            side="right">
+            <span ng-if="ui.photo">Modifier</span>
+            <span ng-if="!ui.photo">Ajouter</span>
+            </button>
+    </ion-header-bar>
+    <ion-content class="w-photo">
+        <img ng-src="{{imgURI}}" ng-if="imgURI">
+        </button>
+   </ion-content>
+</ion-modal-view>
