@@ -1,30 +1,12 @@
 'use strict';
-angular.module('starter.controllers', ['synologyServices'])
+angular.module('starter.controllers', [])
 
 .controller('DashCtrl', [
   '$scope',
   'File',
   function(
-    $scope,
-    SynologyService) {
+    $scope) {
 
-    var Synology = SynologyService.createSynology({
-    });
-    console.log(Synology);
-    Synology.upload({
-        file: 'http://www.joomlaworks.net/images/demos/galleries/abstract/7.jpg',
-        dest_folder_path: '/home'
-      }, function(err, data) {
-        if (err) throw err;
-        console.log(data);
-      });
-  // $cordovaFile.createFile(cordova.file.dataDirectory, "new_file.txt", true)
-  //   .then(function (success) {
-
-  //   console.log('kikou');
-  //  }, function (error) {
-  //   console.log('error');
-  // });
 }])
 
 .controller('ChatsCtrl', function($scope, Chats) {

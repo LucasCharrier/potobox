@@ -5,7 +5,14 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'synologyServices', 'ngCordova'])
+angular.module('starter', [
+  'ionic',
+  'starter.controllers',
+  'starter.services',
+  'pbComponents',
+  'ngCordova',
+  'ngStorage',
+  'synology'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -44,8 +51,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        templateUrl: 'js/controllers/landing/landing.html',
+        controller: 'LandingCtrl'
       }
     }
   })
@@ -78,9 +85,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     }
   });
+  $httpProvider.interceptors.push(['$q', '$location', '$localStorage', function($q, $location, $localStorage) {
+            return {
+                'request': function (config) {
+                    config.headers = config.headers || {};
+                    if ($localStorage.token) {
+                        config.headers.Authorization = 'Bearer ' + $localStorage.token;
+                    }
+                    return config;
+                },
+                'responseError': function(response) {
+                    if(response.status === 401 || response.status === 403) {
+                        $location.path('/signin');
+                    }
+                    return $q.reject(response);
+                }
+            };
+        }]);
 
-  $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-  $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+  // $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+  // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
