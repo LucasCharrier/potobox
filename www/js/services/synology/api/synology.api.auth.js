@@ -28,9 +28,10 @@ angular.module('synology.api',['ngStorage','pbComponents'])
             var token = $localStorage.token;
             var user = {};
             if (typeof token !== 'undefined') {
-                var encoded = token.split('.')[1];
-                user = JSON.parse(urlBase64Decode(encoded));
+                //var encoded = token.split('.')[1];
+                user = token;//JSON.parse(urlBase64Decode(encoded));
             }
+            console.log(user);
             return user;
         }
 
@@ -44,6 +45,18 @@ angular.module('synology.api',['ngStorage','pbComponents'])
                 .success(success)
                 .error(error);
             },
+            info: function(data, success, error){
+                $http({
+                    url : baseUrl + '/query.cgi',
+                    method : 'GET',
+                    params : {
+                        api : 'SYNO.API.Info',
+                        version : 1,
+                        method : 'query',
+                        query : 'SYNO.API.Auth,SYNO.FileStation'
+                    }
+                }).success(success).error(error);
+            },
             login: function(data, success, error) {
                 $http({
                     url : baseUrl + '/auth.cgi',
@@ -54,7 +67,7 @@ angular.module('synology.api',['ngStorage','pbComponents'])
                         method : 'login',
                         account : data.account,
                         passwd : data.passwd,
-                        session : 'test',
+                        session : 'FileStation',
                         format : 'sid'
                     }
                 }).success(success).error(error);

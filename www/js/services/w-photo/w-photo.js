@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('wComponents')
+angular.module('pbComponents', [])
     .directive('wPhoto', [
         '$ionicModal',
         '$state',
         '$localStorage',
         '$ionicActionSheet',
-        'API',
         '$cordovaCamera',
         '$cordovaImagePicker',
         '$rootScope',
@@ -15,7 +14,6 @@ angular.module('wComponents')
             $state,
             $localStorage,
             $ionicActionSheet,
-            API,
             $cordovaCamera,
             $cordovaImagePicker,
             $rootScope) {
@@ -52,10 +50,9 @@ angular.module('wComponents')
                });
             };
 
-            $scope.imgURI = "images/fiches/fiche1.jpg";
 
                 /*/////////// FUNCTION RELATIVE TO MODAL ////////*/
-                $ionicModal.fromTemplateUrl('wheesper-components/w-photo/w-photo.html', {
+                $ionicModal.fromTemplateUrl('js/services/w-photo/w-photo.html', {
                     scope: $scope,
                     animation: 'slide-in-up'
                 }).then(function(modal) {

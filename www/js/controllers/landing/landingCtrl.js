@@ -3,7 +3,26 @@
 /* Controllers */
 
 angular.module('starter')
-    .controller('LandingCtrl', ['$rootScope', '$scope', '$location', '$localStorage', 'SynologyApiAuth', function($rootScope, $scope, $location, $localStorage, SynologyApiAuth ) {
+    .controller('LandingCtrl', [
+        '$rootScope',
+        '$scope',
+        '$location',
+        '$localStorage',
+        'SynologyApiAuth',
+        '$state',
+        function(
+            $rootScope,
+            $scope,
+            $location,
+            $localStorage,
+            SynologyApiAuth,
+            $state) {
+
+        SynologyApiAuth.info({},function(){
+            console.log('success');
+        },function(){
+            console.log('error');
+        });
 
         $scope.signin = function() {
             console.log('signin');
@@ -13,11 +32,12 @@ angular.module('starter')
             };
 
             SynologyApiAuth.login(formData, function(res) {
+                console.log(res);
                 if (res.type === false) {
-                    alert(res.data);
                 } else {
-                    $localStorage.token = res.data.token;
-                    window.location = '/';
+                    $localStorage.token = res.data.sid;
+                    $state.go('tab.dash');
+                    console.log($localStorage.token);
                 }
             }, function() {
                 $rootScope.error = 'Failed to signin';
@@ -58,4 +78,7 @@ angular.module('starter')
             });
         };
         $scope.token = $localStorage.token;
+        if($scope.token){
+            $state.go('tab.dash');
+        }
     }]);

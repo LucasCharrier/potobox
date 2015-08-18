@@ -25,6 +25,11 @@ npm install
 bower install
 ```
 
+Cordova plugins
+--------------------------------------------
+
+cordova plugin add org.apache.cordova.camera
+
 Sublime Text Setup
 --------------------------------------------
 

@@ -1,6 +1,6 @@
 'use strict';
-angular.module('pbComponents',[])
-.factory('pbConstants', ['$rootScope', '$location', '$timeout',
+// angular.module('pbComponents',[]);
+angular.module('pbComponents').factory('pbConstants', ['$rootScope', '$location', '$timeout',
     function ($rootScope, $location, $timeout) {
         // ENVIRONEMENT ***************************************/
 
@@ -8,7 +8,7 @@ angular.module('pbComponents',[])
 
         // RETURN ***************************************/
         return {
-            baseUrl : 'API'
+            baseUrl : 'localhost'
         };
     }
 ]);

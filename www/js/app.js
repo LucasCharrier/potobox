@@ -1,3 +1,4 @@
+'use strict';
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -7,9 +8,9 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic',
+  'pbComponents',
   'starter.controllers',
   'starter.services',
-  'pbComponents',
   'ngCordova',
   'ngStorage',
   'synology'])
@@ -39,7 +40,12 @@ angular.module('starter', [
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('landing', {
+    url: '/landing',
+    templateUrl: 'js/controllers/landing/landing.html',
+    controller: 'LandingCtrl'
+  })
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -51,8 +57,8 @@ angular.module('starter', [
     url: '/dash',
     views: {
       'tab-dash': {
-        templateUrl: 'js/controllers/landing/landing.html',
-        controller: 'LandingCtrl'
+        templateUrl: 'templates/tab-dash.html',
+        controller: 'DashCtrl'
       }
     }
   })
@@ -107,6 +113,6 @@ angular.module('starter', [
   // $httpProvider.defaults.xsrfCookieName = 'csrftoken';
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/landing');
 
 }]);

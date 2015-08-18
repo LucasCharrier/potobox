@@ -1,11 +1,11 @@
 'use strict';
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['pbComponents'])
 
 .controller('DashCtrl', [
   '$scope',
-  'File',
   function(
-    $scope) {
+  $scope
+  ) {
 
 }])
 
