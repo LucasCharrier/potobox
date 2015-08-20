@@ -8,7 +8,7 @@ angular.module('pbComponents').factory('pbConstants', ['$rootScope', '$location'
 
         // RETURN ***************************************/
         return {
-            baseUrl : 'http://www.potobox.fr:5000/webapi'
+            baseUrl : 'localhost'
         };
     }
 ]);
