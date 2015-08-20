@@ -9,6 +9,7 @@ angular.module('starter')
         '$location',
         '$localStorage',
         'SynologyApiAuth',
+        'SynologyFileStation',
         '$state',
         function(
             $rootScope,
@@ -16,6 +17,7 @@ angular.module('starter')
             $location,
             $localStorage,
             SynologyApiAuth,
+            SynologyFileStation,
             $state) {
 
         SynologyApiAuth.info({},function(){

@@ -13,6 +13,8 @@ angular.module('starter', [
   'starter.services',
   'ngCordova',
   'ngStorage',
+  'ngResource',
+  'angularFileUpload',
   'synology'])
 
 .run(function($ionicPlatform) {
@@ -96,7 +98,7 @@ angular.module('starter', [
                 'request': function (config) {
                     config.headers = config.headers || {};
                     if ($localStorage.token) {
-                        config.headers.Authorization = 'Bearer ' + $localStorage.token;
+                         //config.headers['X-CSRFToken'] = 'id ' + $localStorage.token;
                     }
                     return config;
                 },
